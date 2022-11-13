@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    outline: none;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+  }
+  ol,
+  ul,
+  li {
+    list-style: none;
+    display: block;
+  }
+  table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  button,
+  a {
+    cursor: pointer;
+    color: inherit;
+  }
+  a img {
+    border: none;
+  }
+  
+  textarea {
+    resize: none;
+  }
+
+  html {
+    font-size: 62.5%;
+  } 
+
+  body {
+    font-size: 1.6rem;
+  }
+
+  div {
+    box-sizing: border-box;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  // .content-box {
+  //   box-sizing: content-box;
+  // }
+
+  // .App {
+  //   max-width: 1900px; //?
+  // }

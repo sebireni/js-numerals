@@ -1,0 +1,26 @@
+.light-circles .light-circles__circle1 {
+  height: 393px;
+  width: 393px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid #FCFCFC;
+  position: absolute;
+  left: -250px;
+  bottom: -200px;
+}
+.light-circles .light-circles__circle2 {
+  height: 532px;
+  width: 532px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid #FCFCFC;
+  position: absolute;
+  left: -400px;
+  bottom: -200px;
+}
+
+@media screen and (max-width: 896px) {
+  .light-circles {
+    display: none;
+  }
+}/*# sourceMappingURL=LightCircles.css.map */

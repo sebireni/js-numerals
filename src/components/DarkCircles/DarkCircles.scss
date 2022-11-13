@@ -1,0 +1,45 @@
+.dark-circles {
+    .dark-circles__c1 {
+        height: 386px;
+        width: 386px;
+        background-color: #1A1C1E;
+        border-radius: 50%;
+        display: inline-block;
+        position: absolute;
+        bottom: -230px;
+        right: -192px;
+    }
+    .dark-circles__c2 {
+        height: 393px;
+        width: 393px;
+        border-radius: 50%;
+        background-color: transparent;
+        border: 2px solid #1A1C1E;
+        display: inline-block;
+        position: absolute;
+        bottom: -225px;
+        right: -200px;
+    }
+    .dark-circles__c3 {
+        height: 393px;
+        width: 393px;
+        border-radius: 50%;
+        background-color: transparent;
+        border: 1.5px solid #1A1C1E;
+        display: inline-block;
+        position: absolute;
+        bottom: -215px;
+        right: -200px;
+    }
+    .dark-circles__c4 {
+        height: 393px;
+        width: 393px;
+        border-radius: 50%;
+        background-color: transparent;
+        border: 1px solid #1A1C1E;
+        display: inline-block;
+        position: absolute;
+        right: -200px;
+        bottom: -205px;
+    }
+}
