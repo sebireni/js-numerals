@@ -1,3 +1,41 @@
-.form {
+.calculator {
   padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.calculator .calculator__form__number--label {
+  padding-bottom: 8px;
+  font-size: 1.6rem;
+}
+.calculator .calculator__form__number--input {
+  display: block;
+  padding: 8px;
+  width: 250px;
+  border-radius: 6px;
+  border: solid black 1px;
+  font-size: 1.6rem;
+  align-items: center;
+  transition: 0.2s;
+}
+.calculator .calculator__form__number--input:hover {
+  border-color: hsl(240deg, 1%, 72%);
+}
+.calculator .calculator__form__number--input:focus {
+  outline: none;
+  border-color: hsl(220deg, 90%, 56%);
+  box-shadow: 0 0 0 2px hsla(220deg, 90%, 56%, 0.2);
+}
+.calculator .calculator__output {
+  padding: 8px;
+  width: 400px;
+  height: 200px;
+  border-radius: 6px;
+}
+.calculator .calculator__output .calculator__output__title {
+  padding-bottom: 8px;
+  font-size: 1.6rem;
+}
+.calculator .calculator__output .calculator__output__number--English {
+  font-size: 1.8rem;
+  font-weight: bold;
 }/*# sourceMappingURL=Form.css.map */
