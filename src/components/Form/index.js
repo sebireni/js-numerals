@@ -48,50 +48,65 @@ const Form = () => {
     }
     digits.reverse();
 
-    if (number === 0) {
-      text2 = 'zero';
+    if (number > 1000 && number < 2000) {
+      text2 = arrTeen[digits[1]] + ' hundred and ';
+      if (digits[2] === 1) {
+        text2 = text2 + arrTeen[digits[3]];
+      } else if (digits[2] === 0) {
+        if (digits[3] !== 0) {
+          text2 = text2 + arrDig[digits[3]];
+        }
+      } else if (digits[3] === 0) {
+        text2 = text2 + arrTy[digits[2]-2];
+      } else {
+        text2 = text2 + arrTy[digits[2]-2] + '-' + arrDig[digits[3]];
+      }
     } else {
 
-      for (let i=digits.length-1; i >= 0; i--) {
-        
-        if (digits[i] !== 0) {
+      if (number === 0) {
+        text2 = 'zero';
+      } else {
 
-          if (digits.length-i-1 % 3 === 0) {
-            if (digits.length - i === 4) {
-              text2 = ' thousand ' + text2;
-            } else if (digits.length - i === 7) {
-              text2 = ' million ' + text2;
-            } else if (digits.length - i === 10) {
-              text2 = ' billion ' + text2;
-            } else if (digits.length - i === 13) {
-              text2 = ' trillion ' + text2;
-            }
-
-            if (digits[i-1] === 1) { //amikor i 0 azt kezelni meg!?
-              text2 = arrTeen[digits[i]] + text2;
-            } else {
-              text2 = arrDig[digits[i]] + text2;
-            };
+        for (let i=digits.length-1; i >= 0; i--) {
           
-          } else if (digits.length-i-1 % 3 === 1) {
-            if (digits[i+1] > 0) {
-              text2 = arrTy[digits[i]-2] + '-' + text2;
-            } else {
-              text2 = arrTy[digits[i]-2] + text2;
-            }
+          if (digits[i] !== 0) {
 
-          } else if (digits.length-i-1 % 3 === 2) {
-            if (digits[digits.length-1] !== 0 || digits[digits.length-2] !== 0) {
-              text2 = arrDig[digits[i]] + ' houndred and ' + text2;
-            } else {
-              text2 = arrDig[digits[i]] + ' houndred' + text2;
+            if (digits.length-i-1 % 3 === 0) {
+              if (digits.length - i === 4) {
+                text2 = ' thousand ' + text2;
+              } else if (digits.length - i === 7) {
+                text2 = ' million ' + text2;
+              } else if (digits.length - i === 10) {
+                text2 = ' billion ' + text2;
+              } else if (digits.length - i === 13) {
+                text2 = ' trillion ' + text2;
+              }
+
+              if (digits[i-1] === 1) { //amikor i 0 azt kezelni meg!?
+                text2 = arrTeen[digits[i]] + text2;
+              } else {
+                text2 = arrDig[digits[i]] + text2;
+              };
+            
+            } else if (digits.length-i-1 % 3 === 1) {
+              if (digits[i+1] > 0) {
+                text2 = arrTy[digits[i]-2] + '-' + text2;
+              } else {
+                text2 = arrTy[digits[i]-2] + text2;
+              }
+
+            } else if (digits.length-i-1 % 3 === 2) {
+              if (digits[digits.length-1] !== 0 || digits[digits.length-2] !== 0) {
+                text2 = arrDig[digits[i]] + ' houndred and ' + text2;
+              } else {
+                text2 = arrDig[digits[i]] + ' houndred' + text2;
+              }
             }
           }
+          console.log(text2); // 3. kör után nem ad hozza a text2höz!?   
         }
-        console.log(text2); // 3. kör után nem ad hozza a text2höz!?   
-        //kotojel meg hianyzik!
       }
-    };
+    }
 
     setText(text2);
   };

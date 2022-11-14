@@ -10,13 +10,13 @@ const Footer = () => {
     <div className='footer'> 
       <LightCircles/>
       
-      <a className='footer__link--github' href='https://www.instagram.com/feat.agency'>
+      <a className='footer__link--github' href='https://github.com/sebireni'>
         <GitHubIcon sx={{ color: '#fcfcfc' }} />
         sebireni
       </a>
 
       <a className='footer__link--dina' href='https://www.digitalnatives.hu/'>
-        dina 
+        dina
         <EastIcon className='footer__link--dina__arrow' />
       </a>
       
