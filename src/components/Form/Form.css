@@ -25,6 +25,14 @@
   border-color: hsl(220deg, 90%, 56%);
   box-shadow: 0 0 0 2px hsla(220deg, 90%, 56%, 0.2);
 }
+.calculator .calculator__form__number--British {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 1.2rem;
+}
+.calculator .calculator__form__number--British .calculator__form__number--British__checkbox {
+  margin-right: 6px;
+}
 .calculator .calculator__output {
   padding: 8px;
   width: 400px;

@@ -21,8 +21,7 @@ const Home = () => {
         <div className='mobile__title'>
           <h2 className='mobile__title__h2'>Numbers to<br/>Words</h2>
         </div>
-        <Form prop='testingtesting'></Form>
-        {/* prop !!!! */}
+        <Form />
       </section>
     </main>
   );

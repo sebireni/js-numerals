@@ -30,12 +30,21 @@
         }
     }
 
+    .calculator__form__number--British {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        font-size: 1.2rem;
+
+        .calculator__form__number--British__checkbox {
+            margin-right: 6px;           
+        }
+    }
+
     .calculator__output {
         padding: 8px;
         width: 400px;
         height: 200px;
         border-radius: 6px;
-        //border: solid black 1px;
 
         .calculator__output__title {
             padding-bottom: 8px;

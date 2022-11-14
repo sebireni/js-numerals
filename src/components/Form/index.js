@@ -2,18 +2,22 @@ import { Button } from '@mui/material';
 import React, {useState} from 'react';
 import './Form.css';
 
-const Form = ({prop}) => {
+const Form = () => {
   const [number, setNumber] = useState(null);
   const [text, setText] = useState('');
+  const [british, setBritish] = useState(false);
   const digits = [];
   const arrDig = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
   const arrTeen = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
   const arrTy = ['twenty', 'thirty', 'fourty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
-  //const sufixes = ['houndred', 'thousand', 'million', 'billion', 'trillion'];
 
   const getNumberValue = (e) => {
     setNumber(Number(e.target.value));
     setText('');
+  };
+
+  const toggleBritish = () => {
+    setBritish(current => !current);
   };
 
   const validator = () => {
@@ -48,7 +52,7 @@ const Form = ({prop}) => {
     }
     digits.reverse();
 
-    if (number > 1000 && number < 2000) {
+    if (british && number > 1000 && number < 2000) {
       text2 = arrTeen[digits[1]] + ' hundred and ';
       if (digits[2] === 1) {
         text2 = text2 + arrTeen[digits[3]];
@@ -123,6 +127,16 @@ const Form = ({prop}) => {
         onChange={getNumberValue}
       />
 
+      <div className='calculator__form__number--British'>
+        <input
+          className='calculator__form__number--British__checkbox'
+          type='checkbox'
+          id='British'
+          onChange={toggleBritish}
+        />
+        <label for='British'>British English counting</label>
+      </div>
+
       <Button
         onClick={() => { validator(); handleSubmit()}}
         variant='contained'
@@ -137,8 +151,6 @@ const Form = ({prop}) => {
         <div className='calculator__output__title'>English phrase of the number:</div>
         <span className='calculator__output__number--English'>{text}</span>
       </div>  
-      {prop}
-      {/* prop!!! */}
     </div>
   );
 };
