@@ -2,7 +2,7 @@ import { Button } from '@mui/material';
 import React, {useState} from 'react';
 import './Form.css';
 
-const Form = () => {
+const Form = ({prop}) => {
   const [number, setNumber] = useState(null);
   const [text, setText] = useState('');
   const digits = [];
@@ -112,7 +112,7 @@ const Form = () => {
   };
 
   return (
-    <div className='calculator'>
+    <div data-testid='form1' className='calculator'>
       
       <label htmlFor='number' className='calculator__form__number--label'>Convert this number:</label>
       <input
@@ -136,7 +136,9 @@ const Form = () => {
       <div className='calculator__output'>
         <div className='calculator__output__title'>English phrase of the number:</div>
         <span className='calculator__output__number--English'>{text}</span>
-      </div>      
+      </div>  
+      {prop}
+      {/* prop!!! */}
     </div>
   );
 };

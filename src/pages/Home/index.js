@@ -1,7 +1,7 @@
 import React from 'react';
 import './Home.css';
 import Form from '../../components/Form';
-import background from '../../assets/images/background.png';
+import background from '../../assets/images/background1.png';
 import wave from '../../assets/images/wave.svg';
 
 const Home = () => {
@@ -21,7 +21,8 @@ const Home = () => {
         <div className='mobile__title'>
           <h2 className='mobile__title__h2'>Numbers to<br/>Words</h2>
         </div>
-        <Form />
+        <Form prop='testingtesting'></Form>
+        {/* prop !!!! */}
       </section>
     </main>
   );
