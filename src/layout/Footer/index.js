@@ -10,7 +10,7 @@ const Footer = () => {
     <div className='footer'> 
       <LightCircles/>
       
-      <a className='footer__link--github' href='https://github.com/sebireni'>
+      <a className='footer__link--github' href='https://github.com/sebireni/js-numerals.git'>
         <GitHubIcon sx={{ color: '#fcfcfc' }} />
         sebireni
       </a>

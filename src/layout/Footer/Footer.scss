@@ -4,9 +4,7 @@
     width: 100vw;
     display: flex;
     justify-content: flex-start;
-    align-items: flex-end;
-    column-gap: 20%;
-
+    column-gap: 17%;
 
     .footer__link--github {
         display: flex;
@@ -31,7 +29,6 @@
         align-items: center;
         color: #FCFCFC;
         padding-bottom: 4rem;
-        padding-left: 1rem;
 
         .footer__link--dina__arrow {
             color: #FCFCFC;
