@@ -2,115 +2,14 @@ import { Button } from '@mui/material';
 import React, {useState} from 'react';
 import './Form.css';
 
-export const convert = (n, british) => {
-  const arrDig = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
-  const arrTeen = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
-  const arrTy = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
-  let result = '';
-  const digits = [];
-  
-  if (n < 0) {
-    result = 'number must be positive';
-    return;
-  };
-
-  if (!Number.isInteger(n)) {
-    result = 'number must be integer';
-    return;
-  };
-
-  if (n>1000000000000000) {
-    result = 'number must be smaller then 1.000.000.000.000.000';
-    return;
-  };
-
-  while (n > 0) {
-    digits.push(n % 10);
-    n = Math.trunc(n / 10);
-  }
-
-  if (british && n > 1000 && n < 2000) {
-    if (digits[0] !== 0 || digits[1] !==0) {
-      result = arrTeen[digits[2]] + ' hundred and ';
-    } else {
-      result = arrTeen[digits[2]] + ' hundred';
-    }
-    if (digits[1] === 1) {
-      result = result + arrTeen[digits[0]];
-    } else if (digits[1] === 0) {
-      if (digits[0] !== 0) {
-        result = result + arrDig[digits[0]];
-      }
-    } else if (digits[0] === 0) {
-      result = result + arrTy[digits[1]-2];
-    } else {
-      result = result + arrTy[digits[1]-2] + '-' + arrDig[digits[0]];
-    }
-  } else {
-
-    if (n === 0) {
-      result = 'zero';
-    } else {
-
-      for (let i=0; i < digits.length; i++) {
-
-        if (i % 3 === 0 && (digits[i] !== 0 || digits[i+1] !== 0 || digits[i+2] !== 0)) {
-          if ( i === 3) {
-            result = ' thousand ' + result;
-          } else if (i === 6) {
-            result = ' million ' + result;
-          } else if (i === 9) {
-            result = ' billion ' + result;
-          } else if (i === 12) {
-            result = ' trillion ' + result;
-          }
-        }
-        
-        if (digits[i] !== 0) {
-
-          if (i % 3 === 0) {
-            if (i < digits.length && digits[i+1] === 1) {
-              result = arrTeen[digits[i]] + result;
-            } else {
-              result = arrDig[digits[i]] + result;
-            };
-          
-          } else if (i % 3 === 1) {
-            if (digits[i] !== 1) {
-              if (digits[i-1] > 0) {
-                result = arrTy[digits[i]-2] + '-' + result;
-              } else {
-                result = arrTy[digits[i]-2] + result;
-              }
-            }
-
-          } else if (i % 3 === 2) {
-            if (digits[i-1] !== 0 || digits[i-2] !== 0) {
-              result = arrDig[digits[i]] + ' hundred and ' + result;
-            } else {
-              result = arrDig[digits[i]] + ' hundred' + result;
-            }
-          }
-        } else {
-          if (i % 3 === 0 && digits[i+1] === 1) {
-            result = arrTeen[0] + result;
-          }
-        }
-
-        if (i === 2 && digits.length > 3 && digits[2] === 0 && (digits[0] !== 0 || digits[0] !== 0)) {
-          result = ' and ' + result;
-        }
-      }
-    }
-  }
-
-  return result;
-};
-
 const Form = () => {
   const [number, setNumber] = useState(null);
   const [text, setText] = useState('');
   const [british, setBritish] = useState(false);
+  const digits = [];
+  const arrDig = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'];
+  const arrTeen = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+  const arrTy = ['twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety'];
 
   const getNumberValue = (e) => {
     setNumber(Number(e.target.value));
@@ -129,7 +28,104 @@ const Form = () => {
   };
 
   const handleSubmit = () => {
-    setText(convert(number, british));
+    if (number < 0) {
+      setText('number must be positive');
+      return;
+    };
+
+    if (!Number.isInteger(number)) {
+      setText('number must be integer');
+      return;
+    };
+
+    if (number>1000000000000000) {
+      setText('number must be smaller then 1.000.000.000.000.000');
+      return;
+    };
+
+    let n  = number;
+    let text2 = '';
+
+    while (n > 0) {
+      digits.push(n % 10);
+      n = Math.trunc(n / 10);
+    }
+
+    if (british && number > 1000 && number < 2000) {
+      if (digits[0] !== 0 || digits[1] !==0) {
+        text2 = arrTeen[digits[2]] + ' hundred and ';
+      } else {
+        text2 = arrTeen[digits[2]] + ' hundred';
+      }
+      if (digits[1] === 1) {
+        text2 = text2 + arrTeen[digits[0]];
+      } else if (digits[1] === 0) {
+        if (digits[0] !== 0) {
+          text2 = text2 + arrDig[digits[0]];
+        }
+      } else if (digits[0] === 0) {
+        text2 = text2 + arrTy[digits[1]-2];
+      } else {
+        text2 = text2 + arrTy[digits[1]-2] + '-' + arrDig[digits[0]];
+      }
+    } else {
+
+      if (number === 0) {
+        text2 = 'zero';
+      } else {
+
+        for (let i=0; i < digits.length; i++) {
+
+          if (i % 3 === 0 && (digits[i] !== 0 || digits[i+1] !== 0 || digits[i+2] !== 0)) {
+            if ( i === 3) {
+              text2 = ' thousand ' + text2;
+            } else if (i === 6) {
+              text2 = ' million ' + text2;
+            } else if (i === 9) {
+              text2 = ' billion ' + text2;
+            } else if (i === 12) {
+              text2 = ' trillion ' + text2;
+            }
+          }
+          
+          if (digits[i] !== 0) {
+
+            if (i % 3 === 0) {
+              if (i < digits.length && digits[i+1] === 1) {
+                text2 = arrTeen[digits[i]] + text2;
+              } else {
+                text2 = arrDig[digits[i]] + text2;
+              };
+            
+            } else if (i % 3 === 1) {
+              if (digits[i] !== 1) {
+                if (digits[i-1] > 0) {
+                  text2 = arrTy[digits[i]-2] + '-' + text2;
+                } else {
+                  text2 = arrTy[digits[i]-2] + text2;
+                }
+              }
+
+            } else if (i % 3 === 2) {
+              if (digits[i-1] !== 0 || digits[i-2] !== 0) {
+                text2 = arrDig[digits[i]] + ' hundred and ' + text2;
+              } else {
+                text2 = arrDig[digits[i]] + ' hundred' + text2;
+              }
+            }
+          } else {
+            if (i % 3 === 0 && digits[i+1] === 1) {
+              text2 = arrTeen[0] + text2;
+            }
+          }
+
+          if (i === 2 && digits.length > 3 && digits[2] === 0 && (digits[0] !== 0 || digits[0] !== 0)) {
+            text2 = ' and ' + text2;
+          }
+        }
+      }
+    }
+    setText(text2);
   };
 
   return (
