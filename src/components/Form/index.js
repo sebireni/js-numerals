@@ -119,7 +119,7 @@ const Form = () => {
             }
           }
 
-          if (i === 2 && digits.length > 3 && digits[2] === 0) {
+          if (i === 2 && digits.length > 3 && digits[2] === 0 && (digits[0] !== 0 || digits[0] !== 0)) {
             text2 = ' and ' + text2;
           }
         }
