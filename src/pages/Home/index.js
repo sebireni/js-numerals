@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <main className='main-container'>
       <section className='desktop'>
-        <img src={background} className='desktop__background' alt='island background' />
+        <img src={background} className='desktop__background' alt='numbers on blackboard background' />
         <img src={wave} className='desktop__background--wave' alt='white wave' />
         <div className='desktop__title'>
           <h1 className='desktop__title__h1'>Digital Natives<br/>First Assessment</h1>

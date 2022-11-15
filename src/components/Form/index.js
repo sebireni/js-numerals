@@ -46,19 +46,10 @@ const Form = () => {
     let n  = number;
     let text2 = '';
 
-    if (number < 10) {
-      setText(arrDig[number]);
-      return;
-    } else if (number < 20) {
-      setText(arrTeen[number-10]);
-      return;
-    };
-
     while (n > 0) {
       digits.push(n % 10);
       n = Math.trunc(n / 10);
     }
-    // digits.reverse();
 
     if (british && number > 1000 && number < 2000) {
       if (digits[0] !== 0 || digits[1] !==0) {
@@ -85,7 +76,7 @@ const Form = () => {
 
         for (let i=0; i < digits.length; i++) {
 
-          if (i % 3 === 0) {
+          if (i % 3 === 0 && (digits[i] !== 0 || digits[i+1] !== 0 || digits[i+2] !== 0)) {
             if ( i === 3) {
               text2 = ' thousand ' + text2;
             } else if (i === 6) {
@@ -121,6 +112,10 @@ const Form = () => {
               } else {
                 text2 = arrDig[digits[i]] + ' hundred' + text2;
               }
+            }
+          } else {
+            if (i % 3 === 0 && digits[i+1] === 1) {
+              text2 = arrTeen[0] + text2;
             }
           }
 
