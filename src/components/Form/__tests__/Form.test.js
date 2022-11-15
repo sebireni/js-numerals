@@ -19,6 +19,7 @@ let tests = {
 test('7', () =>  {
     const convertedNumber = convert(7);
     expect(convertedNumber).toEqual(tests[7]);
+    expect(convertedNumber).toEqual('seven');
 } );
 
 test('42', () =>  {
